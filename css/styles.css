@@ -20,6 +20,8 @@
     --hero-backgraund-color:#2F303A;
     --second-logo-color:#000000;
     --hero-color:#FFFFFF;
+
+    --timing-function:cubic-bezier(0.4, 0, 0.2, 1)
     
 }
 
@@ -136,6 +138,8 @@ address{
 
 /* ----------------HEADER----------------- */
 
+
+
 .header,
 .header-portfolio {
     background-color: var(--primary-backgraund-color);
@@ -148,6 +152,7 @@ address{
 .header-list{
     display: flex;
     margin-left: 93px;
+    position: relative;
 }
 
 .header-list .header-item + .header-item{
@@ -157,37 +162,48 @@ address{
 .main-nav{
     display: flex;
     align-items: center;
-    position: relative;
 }
 
 .header-link {
+    position: relative;
+    display: block;
+   
     color: var(--title-text-color);
+
+    transition: color 250ms var(--timing-function);
 }
+
+
 .header-list .header-link {
     display: block;
     padding-top: 32px;
     padding-bottom: 32px;
 }
+
 .header-link:hover,
 .header-link:focus{color: var(--button-active-color);
-}
-
-
-.header-link:hover::after,
-.header-link:focus::after {
-    position: absolute;
-    content: "";
-    background-image: url(../images/hover.png);
-    background-repeat: no-repeat;
-    bottom:-1px;
-    padding-left: 2px;
-    padding-right: 2px;
 }
 
 
 
 .current{
     color: var(--button-active-color);
+}
+
+
+.header-link.current::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom:-1px;
+    
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--button-active-color);
+    opacity: 1;
+    transition: opacity 250ms var(--timing-function);
 }
 
 
@@ -224,6 +240,8 @@ address{
 .header-tel:hover,
 .header-tel:focus{
     color: var(--button-active-color);
+
+    transition: color 250ms var(--timing-function);
 }
    
 
@@ -237,6 +255,7 @@ address{
     padding-bottom: 32px;
     display: flex;
     align-items: center;
+    transition: color 250ms var(--timing-function);
 }
 
 .header-mail:hover,
@@ -287,7 +306,7 @@ address{
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.btn-design{
+.button-icon{
     position: absolute;
     top: 8px;
     right: 8px;
@@ -295,13 +314,12 @@ address{
     height: 30px;
     background-color: #fff;
    border: 1px solid rgba(0, 0, 0, 0.1);
-   padding-top: 6px;
-   padding-right: 6px;
-   padding-bottom: 6px;
+   border-radius: 50%;
+    background-color: transparent;
     padding-left: 6px;
-
-
+    padding-right: 6px;
 }
+
 
 .backdrop.is-hidden{
     opacity: 0;
@@ -314,12 +332,14 @@ address{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 10px;
 
     width: 528px;
     height: 581px;
 
     background-color: #fff;
     padding: 15px;
+
 }
 
 .hero-btn {
@@ -466,17 +486,23 @@ address{
 }
 
 .team-soc-link{
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: var(--primary-backgraund-color);
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    background-color: var(--primary-backgraund-color);
+    transition: background-color 250ms var(--timing-function) ;
+
 }
 
 .team-soc-item{
     fill: #AFB1B8;
+
+    transition: fill 250ms var(--timing-function);
 }
 
 .team-soc-link:hover,
@@ -515,6 +541,8 @@ address{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: border 250ms var(--timing-function);
 }
 
 .customer-item-example:hover,
@@ -534,6 +562,7 @@ address{
 
 .customer-icons{
     fill:#AFB1B8;
+    transition: fill 250ms var(--timing-function);
 }
 
 /* ----------------FOOTER----------------- */
@@ -568,8 +597,10 @@ address{
     font-size: 14px;
     line-height: 1.71;
     letter-spacing: 0.03em;
-    color: var(--hero-color);
     margin-top: 0px;
+
+    color: var(--hero-color);
+    transition: color 250ms var(--timing-function);
 }
 
 
@@ -596,6 +627,7 @@ address{
     line-height: 1.71;
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.6);
+    transition: color 250ms var(--timing-function);
 }
 
 .footer-title{
@@ -638,13 +670,16 @@ address{
 }
 
 .footer-icons-link{
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 250ms var(--timing-function);
 }
 
 .footer-icons-link:hover,
@@ -674,20 +709,24 @@ address{
 }
 
 .filter-btn{
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.62;
-    text-align: center;
-    letter-spacing: 0.03em;
-    color: var(--button-text-color);
-    background-color: var(--button-color);
     display: block;
     padding: 6px 22px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.62;
+    text-align: center;
+    letter-spacing: 0.03em;
+
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+
+    transition: color 250ms var(--timing-function), 
+    background-color 250ms var(--timing-function);
 }
 
 .filter-btn:hover,
@@ -695,6 +734,9 @@ address{
     color:var(--hero-color);
     background-color: var(--button-active-color);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+    /* transition: color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function); */
 }
 
 .portfolio-list{
@@ -704,6 +746,7 @@ address{
 
 .portfolio-cards-link{
     display: block;
+    transition: box-shadow 250ms var(--timing-function);
 }
 
 .portfolio-cards-link:hover,
